@@ -318,7 +318,23 @@
     </div>
   </div>
 
+  <script>
+    // JS 异常可视化：白屏/按钮失灵时直接把错误画到页面上
+    window.addEventListener('error', (e) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#5b2330;color:#ff9c9c;padding:8px 14px;font:12px Consolas,monospace;white-space:pre-wrap;';
+      div.textContent = '⚠ JS 错误: ' + (e.message || e.error);
+      document.body.appendChild(div);
+      setTimeout(() => div.remove(), 10000);
+    });
+  </script>
   <script type="module">
+    // Tauri API 兜底提示：withGlobalTauri 未开或打包异常时立刻暴露
+    if (!window.__TAURI__) {
+      document.body.innerHTML = '<div style="padding:40px;color:#ff6b6b;font:14px sans-serif">' +
+        '⚠ Tauri API 未注入（window.__TAURI__ 不存在）。<br>' +
+        '请检查 tauri.conf.json 的 app.withGlobalTauri 是否为 true。</div>';
+    }
     const { invoke } = window.__TAURI__.core;
     const { listen } = window.__TAURI__.event;
 
