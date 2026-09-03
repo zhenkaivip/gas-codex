@@ -1,0 +1,13 @@
+cargo:rerun-if-env-changed=TAURI_CONFIG
+cargo:rustc-check-cfg=cfg(desktop)
+cargo:rustc-cfg=desktop
+cargo:rustc-check-cfg=cfg(mobile)
+cargo:rerun-if-changed=/root/codex_client/gas-codex/src-tauri/tauri.conf.json
+cargo:rustc-env=TAURI_ANDROID_PACKAGE_NAME_APP_NAME=gascodex
+cargo:rustc-env=TAURI_ANDROID_PACKAGE_NAME_PREFIX=com_zhenkai
+cargo:rustc-check-cfg=cfg(dev)
+cargo:rustc-cfg=dev
+cargo:PERMISSION_FILES_PATH=/root/codex_client/gas-codex/src-tauri/target/debug/build/gas-codex-7cdd2de747d45a8a/out/app-manifest/__app__-permission-files
+cargo:rerun-if-changed=capabilities
+cargo:rerun-if-env-changed=REMOVE_UNUSED_COMMANDS
+cargo:rustc-env=TAURI_ENV_TARGET_TRIPLE=x86_64-unknown-linux-gnu

@@ -210,6 +210,12 @@
       color: #fff; font-size: 14px; cursor: pointer; font-family: inherit;
     }
     #send:disabled { opacity: .5; cursor: not-allowed; }
+    #btn-stop {
+      height: 42px; min-width: 84px; border: none; border-radius: 9px;
+      background: #5b2330; color: #ff9c9c; font-size: 14px;
+      cursor: pointer; font-family: inherit; display: none;
+    }
+    #btn-stop.visible { display: block; }
     .status { font-size: 12px; color: var(--muted); margin-top: 6px; height: 16px; }
 
     /* ===== 设置弹窗 ===== */
@@ -273,6 +279,7 @@
     <footer>
       <div class="input-row">
         <textarea id="input" rows="1" placeholder="描述任务，Enter 发送，Shift+Enter 换行"></textarea>
+        <button id="btn-stop" title="停止当前任务">■ 停止</button>
         <button id="send">发送</button>
       </div>
       <div class="status" id="status"></div>
@@ -323,16 +330,36 @@
     let cfg = { baseUrl: '', apiKey: '', model: '', codexPath: '', workDir: '' };
     let busy = false;
     let pendingRpc = new Map();
+    let activeTurn = null;   // {threadId, turnId} 用于中断
 
-    // ============ 会话管理（多会话） ============
-    let sessions = [];         // {id, threadId, title, running, el}
-    let activeSession = null;
+    // ============ 会话管理（多会话 + 持久化） ============
+    let sessions = [];         // {id, threadId, title, running}
+
+    function saveSessions() {
+      try {
+        localStorage.setItem('gas-sessions', JSON.stringify(sessions));
+        localStorage.setItem('gas-active', activeSession?.id || '');
+      } catch {}
+    }
+    function loadSessions() {
+      try {
+        const data = JSON.parse(localStorage.getItem('gas-sessions') || '[]');
+        if (Array.isArray(data) && data.length) {
+          sessions = data.map(s => ({...s, running: false}));
+          const activeId = localStorage.getItem('gas-active');
+          activeSession = sessions.find(s => s.id === activeId) || sessions[0];
+          return true;
+        }
+      } catch {}
+      return false;
+    }
 
     function newSession() {
       const s = { id: 's' + Date.now(), threadId: null, title: '新对话', running: false };
       sessions.push(s);
       renderSessions();
       switchSession(s.id);
+      saveSessions();
       return s;
     }
 
@@ -340,6 +367,7 @@
       activeSession = sessions.find(s => s.id === id);
       renderSessions();
       renderChat();
+      saveSessions();
     }
 
     function renderSessions() {
@@ -354,27 +382,44 @@
       }
     }
 
-    // 每个会话独立的 DOM 池：切回来还在
+    // 每个会话独立的 DOM 池：切回来还在；HTML 持久化到 localStorage
     const sessionDoms = new Map();
     function renderChat() {
       chatEl.innerHTML = '';
       if (!activeSession) return;
-      const dom = sessionDoms.get(activeSession.id);
-      if (dom) {
-        chatEl.appendChild(dom);
-      } else {
-        const d = document.createElement('div');
-        d.style.cssText = 'display:flex;flex-direction:column;gap:12px;flex:1;';
-        d.innerHTML = `<div class="empty" style="flex:1"><div class="big">Gas Codex</div><div style="font-size:13px;color:#8888a0">描述任务开始</div></div>`;
-        sessionDoms.set(activeSession.id, d);
-        chatEl.appendChild(d);
+      let dom = sessionDoms.get(activeSession.id);
+      if (!dom) {
+        // 尝试从持久化恢复
+        try {
+          const html = localStorage.getItem('gas-chat-' + activeSession.id);
+          if (html) {
+            dom = document.createElement('div');
+            dom.style.cssText = 'display:flex;flex-direction:column;gap:12px;flex:1;';
+            dom.innerHTML = html;
+          }
+        } catch {}
       }
+      if (!dom) {
+        dom = document.createElement('div');
+        dom.style.cssText = 'display:flex;flex-direction:column;gap:12px;flex:1;';
+        dom.innerHTML = `<div class="empty" style="flex:1"><div class="big">Gas Codex</div><div style="font-size:13px;color:#8888a0">描述任务开始</div></div>`;
+      }
+      sessionDoms.set(activeSession.id, dom);
+      chatEl.appendChild(dom);
     }
     function chatPool() { return sessionDoms.get(activeSession.id); }
+    function persistChat() {
+      if (!activeSession) return;
+      const dom = sessionDoms.get(activeSession.id);
+      if (dom) {
+        try { localStorage.setItem('gas-chat-' + activeSession.id, dom.innerHTML); } catch {}
+      }
+    }
 
     function setSessionTitle(s, text) {
       s.title = text.slice(0, 18) || '新对话';
       renderSessions();
+      saveSessions();
     }
     function setSessionRunning(s, on) {
       s.running = on;
@@ -449,6 +494,18 @@
     function setConn(on, text) { connEl.className = 'conn' + (on ? ' on' : ''); connEl.textContent = text; }
 
     // ============ codex 事件流 ============
+    // 引擎退出（崩溃/被杀）：提示 + 允许自动恢复
+    listen('codex-exit', (e) => {
+      engineReady = false;
+      setConn(false, '引擎已退出');
+      if (busy) {
+        addMsg('error', '⚠ codex 引擎进程意外退出，当前任务已中断。\n再次发送消息将自动重启引擎。');
+        setBusy(false);
+        setStatus('');
+        if (activeSession) setSessionRunning(activeSession, false);
+      }
+    });
+
     listen('codex-event', (e) => {
       const evt = e.payload;
       const method = evt.method || '';
@@ -578,12 +635,13 @@
       }
 
       if (method === 'turn/completed') {
-        busy = false; sendEl.disabled = false; setStatus('');
+        activeTurn = null;
+        setBusy(false); setStatus(''); persistChat();
         if (activeSession) setSessionRunning(activeSession, false);
       }
       if (method === 'error') {
         addMsg('error', 'codex: ' + (params?.error?.message || JSON.stringify(params)));
-        busy = false; sendEl.disabled = false; setStatus('');
+        setBusy(false); setStatus(''); persistChat();
       }
     }
 
@@ -656,10 +714,10 @@
       if (!cwd) { setStatus('请先填写顶部的工作目录'); return; }
 
       if (!activeSession) newSession();
-      busy = true; sendEl.disabled = true;
+      setBusy(true);
       inputEl.value = ''; autoGrow();
 
-      if (!(await ensureStarted())) { busy = false; sendEl.disabled = false; return; }
+      if (!(await ensureStarted())) { setBusy(false); return; }
 
       const s = activeSession;
       addMsg('user', text);
@@ -672,16 +730,32 @@
           s.threadId = res.thread?.id || res.threadId;
         }
         setStatus('任务进行中…');
-        await rpc('turn/start', { threadId: s.threadId, input: [{ type: 'text', text }] });
+        const turn = await rpc('turn/start', { threadId: s.threadId, input: [{ type: 'text', text }] });
+        if (turn?.turn?.id) activeTurn = { threadId: s.threadId, turnId: turn.turn.id };
       } catch (e) {
         addMsg('error', String(e));
         setStatus('');
         setSessionRunning(s, false);
-        busy = false; sendEl.disabled = false;
+        setBusy(false);
       }
     }
 
     sendEl.onclick = send;
+    $('btn-stop').onclick = async () => {
+      if (!activeTurn) return;
+      setStatus('正在停止…');
+      try {
+        await rpc('turn/interrupt', {
+          threadId: activeTurn.threadId,
+          turnId: activeTurn.turnId,
+        });
+      } catch (e) { console.error(e); }
+    };
+    function setBusy(on) {
+      busy = on;
+      sendEl.disabled = on;
+      $('btn-stop').classList.toggle('visible', on);
+    }
     inputEl.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
     });
@@ -725,6 +799,7 @@
     }
 
     $('btn-save').onclick = async () => {
+      if (busy && !confirm('当前有任务正在运行，保存并重启引擎会中断它。继续？')) return;
       cfg = readForm();
       await invoke('save_config', { cfg });
       $('settings-overlay').classList.remove('open');
@@ -761,7 +836,8 @@
         if (!cfg.baseUrl) openSettings();
       } catch (e) { console.error(e); }
       refreshEngineInfo();
-      newSession();  // 默认开一个会话
+      if (!loadSessions()) newSession();  // 恢复上次会话，没有才新建
+      else { renderSessions(); renderChat(); }
       inputEl.focus();
     })();
   </script>
