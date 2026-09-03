@@ -1,0 +1,10 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/alloc_no_stdlib-2ae42a7957406378.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_memory/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_memory/index_macro.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/stack_allocator.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_stack_memory.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/init.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/liballoc_no_stdlib-2ae42a7957406378.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_memory/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_memory/index_macro.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/stack_allocator.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_stack_memory.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/init.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_memory/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_memory/index_macro.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/stack_allocator.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/allocated_stack_memory.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/alloc-no-stdlib-2.0.4/src/init.rs:

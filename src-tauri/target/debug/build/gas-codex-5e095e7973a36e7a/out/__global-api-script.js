@@ -1,0 +1,1 @@
+["/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-2.11.5/scripts/bundle.global.js"]

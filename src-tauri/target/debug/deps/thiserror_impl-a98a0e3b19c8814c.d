@@ -1,0 +1,14 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/thiserror_impl-a98a0e3b19c8814c.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/ast.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/attr.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/expand.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/fmt.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/generics.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/prop.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/scan_expr.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/span.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/valid.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libthiserror_impl-a98a0e3b19c8814c.so: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/ast.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/attr.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/expand.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/fmt.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/generics.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/prop.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/scan_expr.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/span.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/valid.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/ast.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/attr.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/expand.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/fmt.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/generics.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/prop.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/scan_expr.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/span.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/thiserror-impl-1.0.69/src/valid.rs:

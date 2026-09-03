@@ -1,0 +1,13 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/yoke-edd9aa0cf2943ca3.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/cartable_ptr.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/either.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/kinda_sorta_dangling.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/macro_impls.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/utils.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/yoke.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/yokeable.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/zero_from.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libyoke-edd9aa0cf2943ca3.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/cartable_ptr.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/either.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/kinda_sorta_dangling.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/macro_impls.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/utils.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/yoke.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/yokeable.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/zero_from.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/cartable_ptr.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/either.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/kinda_sorta_dangling.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/macro_impls.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/utils.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/yoke.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/yokeable.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/yoke-0.8.3/src/zero_from.rs:

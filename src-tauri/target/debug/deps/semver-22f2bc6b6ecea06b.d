@@ -1,0 +1,11 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/semver-22f2bc6b6ecea06b.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/display.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/eval.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/identifier.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/impls.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/parse.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libsemver-22f2bc6b6ecea06b.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/display.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/eval.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/identifier.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/impls.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/parse.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/display.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/error.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/eval.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/identifier.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/impls.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/semver-1.0.28/src/parse.rs:

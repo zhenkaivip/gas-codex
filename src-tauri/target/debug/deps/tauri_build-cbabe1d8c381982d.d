@@ -1,0 +1,12 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/tauri_build-cbabe1d8c381982d.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/acl.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/manifest.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/mobile.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/static_vcruntime.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/windows-app-manifest.xml
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtauri_build-cbabe1d8c381982d.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/acl.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/manifest.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/mobile.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/static_vcruntime.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/windows-app-manifest.xml
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtauri_build-cbabe1d8c381982d.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/acl.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/manifest.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/mobile.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/static_vcruntime.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/windows-app-manifest.xml
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/acl.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/manifest.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/mobile.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/static_vcruntime.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-build-2.6.3/src/windows-app-manifest.xml:

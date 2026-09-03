@@ -1,0 +1,14 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/urlpattern-da7d9901908ceab6.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/canonicalize_and_process.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/component.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/constructor_parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/matcher.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/quirks.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/regexp.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/tokenizer.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/liburlpattern-da7d9901908ceab6.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/canonicalize_and_process.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/component.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/constructor_parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/matcher.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/quirks.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/regexp.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/tokenizer.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/canonicalize_and_process.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/component.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/constructor_parser.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/error.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/matcher.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/parser.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/quirks.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/regexp.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/urlpattern-0.3.0/src/tokenizer.rs:

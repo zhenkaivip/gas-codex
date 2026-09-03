@@ -1,0 +1,13 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/bitflags-55d049b0d264ce15.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/iter.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/traits.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/public.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/internal.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/external.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libbitflags-55d049b0d264ce15.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/iter.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/traits.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/public.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/internal.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/external.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libbitflags-55d049b0d264ce15.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/iter.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/parser.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/traits.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/public.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/internal.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/external.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/iter.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/parser.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/traits.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/public.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/internal.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/bitflags-2.13.1/src/external.rs:

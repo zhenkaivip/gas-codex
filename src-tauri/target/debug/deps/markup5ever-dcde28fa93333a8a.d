@@ -1,0 +1,12 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/markup5ever-dcde28fa93333a8a.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/tree_builder.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/serialize.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/buffer_queue.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/smallcharset.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libmarkup5ever-dcde28fa93333a8a.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/tree_builder.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/serialize.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/buffer_queue.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/smallcharset.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libmarkup5ever-dcde28fa93333a8a.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/tree_builder.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/serialize.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/buffer_queue.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/smallcharset.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/interface/tree_builder.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/serialize.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/buffer_queue.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/markup5ever-0.38.0/util/smallcharset.rs:

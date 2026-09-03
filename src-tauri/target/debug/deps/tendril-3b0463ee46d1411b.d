@@ -1,0 +1,14 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/tendril-3b0463ee46d1411b.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/fmt.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/stream.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/buf32.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/tendril.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/utf8_decode.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/futf.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtendril-3b0463ee46d1411b.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/fmt.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/stream.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/buf32.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/tendril.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/utf8_decode.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/futf.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtendril-3b0463ee46d1411b.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/fmt.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/stream.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/buf32.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/tendril.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/utf8_decode.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/futf.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/fmt.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/stream.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/buf32.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/tendril.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/utf8_decode.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/util.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tendril-0.5.1/src/futf.rs:

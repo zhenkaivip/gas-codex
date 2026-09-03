@@ -1,0 +1,12 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/version_compare-9f74a162260e8118.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/cmp.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/compare.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/manifest.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/part.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/version.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libversion_compare-9f74a162260e8118.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/cmp.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/compare.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/manifest.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/part.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/version.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libversion_compare-9f74a162260e8118.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/cmp.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/compare.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/manifest.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/part.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/version.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/cmp.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/compare.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/manifest.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/part.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/version-compare-0.2.1/src/version.rs:

@@ -1,0 +1,15 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/target_lexicon-c8d7b1b2f8168795.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/data_model.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/host.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/parse_error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/targets.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/triple.rs /root/codex_client/gas-codex/src-tauri/target/debug/build/target-lexicon-f86b1b532e31e490/out/host.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtarget_lexicon-c8d7b1b2f8168795.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/data_model.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/host.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/parse_error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/targets.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/triple.rs /root/codex_client/gas-codex/src-tauri/target/debug/build/target-lexicon-f86b1b532e31e490/out/host.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtarget_lexicon-c8d7b1b2f8168795.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/data_model.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/host.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/parse_error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/targets.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/triple.rs /root/codex_client/gas-codex/src-tauri/target/debug/build/target-lexicon-f86b1b532e31e490/out/host.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/data_model.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/host.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/parse_error.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/targets.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/target-lexicon-0.12.16/src/triple.rs:
+/root/codex_client/gas-codex/src-tauri/target/debug/build/target-lexicon-f86b1b532e31e490/out/host.rs:
+
+# env-dep:OUT_DIR=/root/codex_client/gas-codex/src-tauri/target/debug/build/target-lexicon-f86b1b532e31e490/out

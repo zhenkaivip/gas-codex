@@ -1,0 +1,12 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/tauri_runtime_wry-0f7bb5ba06a4fff5.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/monitor/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/monitor/linux.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/undecorated_resizing.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/webview.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/window/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/window/linux.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtauri_runtime_wry-0f7bb5ba06a4fff5.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/monitor/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/monitor/linux.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/undecorated_resizing.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/webview.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/window/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/window/linux.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/monitor/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/monitor/linux.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/undecorated_resizing.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/util.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/webview.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/window/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-runtime-wry-2.11.4/src/window/linux.rs:

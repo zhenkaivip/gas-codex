@@ -1,0 +1,12 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/tauri_codegen-ef1a511b95b2ee10.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/context.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/embedded_assets.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/image.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/blake3_reference.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtauri_codegen-ef1a511b95b2ee10.rlib: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/context.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/embedded_assets.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/image.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/blake3_reference.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtauri_codegen-ef1a511b95b2ee10.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/context.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/embedded_assets.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/image.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/blake3_reference.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/context.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/embedded_assets.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/image.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-codegen-2.6.3/src/vendor/blake3_reference.rs:

@@ -1,0 +1,13 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/getrandom-827078bec6c547a9.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/../README.md /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/use_file.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/../util_libc.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/linux_android_with_fallback.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/sanitizer.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libgetrandom-827078bec6c547a9.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/util.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/../README.md /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/use_file.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/../util_libc.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/linux_android_with_fallback.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/sanitizer.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/error.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/util.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/../README.md:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/use_file.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/../util_libc.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/linux_android_with_fallback.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/getrandom-0.3.4/src/backends/sanitizer.rs:
