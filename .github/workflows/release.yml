@@ -17,9 +17,7 @@ jobs:
       matrix:
         include:
           - platform: windows-latest   # 出 .exe / .msi
-            args: ''
           - platform: macos-latest     # 出 .dmg / .app（Intel + Apple Silicon）
-            args: '--target aarch64-apple-darwin,x86_64-apple-darwin'
 
     runs-on: ${{ matrix.platform }}
 
@@ -30,7 +28,8 @@ jobs:
       - name: 安装 Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+          targets: 'aarch64-apple-darwin,x86_64-apple-darwin'
+        if: matrix.platform == 'macos-latest'
 
       - name: Rust 缓存
         uses: swatinem/rust-cache@v2
@@ -48,4 +47,3 @@ jobs:
           releaseBody: 'Windows / macOS 安装包。Windows 首次运行如遇 SmartScreen 提示，选"仍要运行"；macOS 首次打开需右键→打开。'
           releaseDraft: false
           prerelease: false
-          args: ${{ matrix.args }}
