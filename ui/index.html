@@ -9,47 +9,83 @@
       --bg: #1a1a2e; --panel: #16162a; --input-bg: #23233f;
       --border: #2a2a45; --text: #e0e0e0; --muted: #8888a0;
       --accent: #4f8cff; --accent2: #9d5cff; --err: #ff6b6b; --ok: #6bff9e;
+      --sidebar: #12121f;
     }
     html, body { height: 100%; }
     body {
       font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
       background: var(--bg); color: var(--text);
-      display: flex; flex-direction: column; overflow: hidden;
+      display: flex; overflow: hidden;
     }
 
-    /* ===== 顶栏 ===== */
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 16px; background: var(--panel);
-      border-bottom: 1px solid var(--border); user-select: none;
+    /* ===== 侧边栏 ===== */
+    #sidebar {
+      width: 220px; background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; flex-shrink: 0;
     }
-    .logo {
-      font-size: 16px; font-weight: 700;
+    #sidebar .brand {
+      padding: 14px 14px 10px; font-size: 15px; font-weight: 700;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text; background-clip: text; color: transparent;
+      user-select: none;
     }
-    .conn { font-size: 12px; color: var(--muted); margin-left: 12px; }
+    #btn-new-chat {
+      margin: 4px 10px 10px; padding: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none; border-radius: 9px; font-size: 13.5px;
+      cursor: pointer; font-family: inherit;
+    }
+    #btn-new-chat:hover { filter: brightness(1.15); }
+    #sessions { flex: 1; overflow-y: auto; padding: 0 8px; }
+    #sessions::-webkit-scrollbar { width: 5px; }
+    #sessions::-webkit-scrollbar-thumb { background: #33335a; border-radius: 3px; }
+    .session {
+      padding: 9px 10px; border-radius: 8px; cursor: pointer;
+      font-size: 13px; color: var(--muted); margin-bottom: 2px;
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap; overflow: hidden;
+    }
+    .session:hover { background: var(--input-bg); color: var(--text); }
+    .session.active { background: var(--input-bg); color: var(--text); }
+    .session .dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+      background: #44445e;
+    }
+    .session.running .dot { background: var(--ok); animation: pulse 1.2s infinite; }
+    .session .title { overflow: hidden; text-overflow: ellipsis; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+    #sidebar .foot {
+      padding: 10px 12px; border-top: 1px solid var(--border);
+      font-size: 11px; color: #666680; display: flex;
+      justify-content: space-between; align-items: center;
+    }
+    #btn-settings {
+      background: none; border: none; color: var(--muted);
+      font-size: 16px; cursor: pointer; padding: 4px;
+    }
+    #btn-settings:hover { color: var(--text); }
+
+    /* ===== 主区 ===== */
+    #main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 16px; background: var(--panel);
+      border-bottom: 1px solid var(--border);
+    }
+    .conn { font-size: 12px; color: var(--muted); }
     .conn.on { color: var(--ok); }
-    header .actions { display: flex; gap: 8px; align-items: center; }
-    button {
-      border: none; border-radius: 8px; padding: 7px 14px; font-size: 13px;
-      cursor: pointer; background: var(--input-bg); color: var(--text);
-      transition: filter .15s; font-family: inherit;
-    }
-    button:hover { filter: brightness(1.25); }
-    button:disabled { opacity: .5; cursor: not-allowed; }
-    button.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
-    button.danger { background: #5b2330; color: #ff9c9c; }
-    button.approve { background: #1d4d34; color: var(--ok); }
     #workdir {
       background: var(--input-bg); color: var(--muted); border: 1px solid var(--border);
-      border-radius: 8px; padding: 6px 10px; font-size: 12.5px; width: 220px;
+      border-radius: 8px; padding: 6px 10px; font-size: 12.5px; width: 240px;
       outline: none; font-family: inherit;
     }
+    #workdir:focus { border-color: var(--accent); color: var(--text); }
 
     /* ===== 消息区 ===== */
     #chat {
-      flex: 1; overflow-y: auto; padding: 20px 16px;
+      flex: 1; overflow-y: auto; padding: 20px 24px;
       display: flex; flex-direction: column; gap: 12px;
     }
     #chat::-webkit-scrollbar { width: 8px; }
@@ -57,27 +93,58 @@
 
     .msg {
       max-width: 82%; padding: 10px 14px; border-radius: 12px;
-      line-height: 1.65; font-size: 14.5px; white-space: pre-wrap;
-      word-break: break-word; user-select: text;
+      line-height: 1.65; font-size: 14.5px; word-break: break-word;
+      user-select: text;
     }
     .msg.user {
       align-self: flex-end;
       background: linear-gradient(135deg, #2b4a8b, #4a2b8b);
-      border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px; white-space: pre-wrap;
     }
     .msg.assistant {
       align-self: flex-start; background: var(--panel);
       border: 1px solid var(--border); border-bottom-left-radius: 4px;
     }
+    .msg.assistant p { margin: 0 0 8px; } .msg.assistant p:last-child { margin: 0; }
+    .msg.assistant pre {
+      background: #0d0d18; border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 12px; overflow-x: auto; margin: 8px 0;
+      font-family: Consolas, "Courier New", monospace; font-size: 13px;
+      line-height: 1.5;
+    }
+    .msg.assistant code {
+      font-family: Consolas, monospace; font-size: 13px;
+      background: #0d0d18; padding: 1px 5px; border-radius: 4px;
+    }
+    .msg.assistant pre code { background: none; padding: 0; }
+    .msg.assistant ul, .msg.assistant ol { padding-left: 22px; margin: 8px 0; }
+    .msg.assistant h1,.msg.assistant h2,.msg.assistant h3 { margin: 10px 0 6px; }
+    .msg.assistant h1 { font-size: 17px; } .msg.assistant h2 { font-size: 16px; } .msg.assistant h3 { font-size: 15px; }
+    .msg.assistant a { color: var(--accent); }
+    .msg.assistant table { border-collapse: collapse; margin: 8px 0; }
+    .msg.assistant th, .msg.assistant td { border: 1px solid var(--border); padding: 5px 10px; font-size: 13px; }
     .msg.error {
       align-self: center; background: transparent; color: var(--err);
       border: 1px dashed var(--err); font-size: 13px; max-width: 90%;
+      white-space: pre-wrap;
     }
 
-    /* 命令执行卡片 */
+    /* 思考过程（可折叠） */
+    .thinking {
+      align-self: flex-start; max-width: 82%;
+      border-left: 3px solid #3d3d66; padding: 4px 12px;
+      color: #7a7a99; font-size: 12.5px; line-height: 1.55;
+      cursor: pointer; user-select: none;
+    }
+    .thinking .label { font-style: italic; }
+    .thinking .body { display: none; margin-top: 5px; white-space: pre-wrap; user-select: text; }
+    .thinking.open .body { display: block; }
+    .thinking.open .label::after { content: '（点击收起）'; font-size: 11px; }
+
+    /* 命令卡片 */
     .cmd-card {
       align-self: flex-start; max-width: 82%;
-      background: #12121f; border: 1px solid var(--border);
+      background: #0d0d18; border: 1px solid var(--border);
       border-radius: 10px; overflow: hidden; font-size: 13px;
     }
     .cmd-card .head {
@@ -85,15 +152,20 @@
       padding: 7px 12px; background: #1c1c33;
       font-family: Consolas, monospace; color: #9db4ff;
     }
-    .cmd-card .head .icon { font-size: 13px; }
+    .cmd-card .head .cmd-text {
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+    .cmd-card .head .status { color: var(--muted); font-size: 12px; flex-shrink: 0; }
     .cmd-card .body {
       padding: 8px 12px; font-family: Consolas, monospace;
-      color: var(--muted); white-space: pre-wrap; max-height: 200px; overflow-y: auto;
+      color: #a8a8c0; white-space: pre-wrap; max-height: 220px; overflow-y: auto;
+      display: none;
     }
+    .cmd-card.has-output .body { display: block; }
     .cmd-card.exit-ok .head .status { color: var(--ok); }
     .cmd-card.exit-err .head .status { color: var(--err); }
 
-    /* 审批请求卡片 */
+    /* 审批 */
     .approval {
       align-self: center; max-width: 88%;
       background: #2b2300; border: 1px solid #6b5a00;
@@ -106,6 +178,9 @@
       margin-bottom: 10px; white-space: pre-wrap; word-break: break-all;
     }
     .approval .row { display: flex; gap: 10px; justify-content: flex-end; }
+    button.danger { background: #5b2330; color: #ff9c9c; }
+    button.approve { background: #1d4d34; color: var(--ok); }
+    .approval button { border: none; border-radius: 8px; padding: 7px 16px; font-size: 13px; cursor: pointer; font-family: inherit; }
 
     .empty {
       flex: 1; display: flex; flex-direction: column;
@@ -116,9 +191,11 @@
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .typing-cursor { display: inline-block; width: 7px; height: 15px; background: var(--accent); animation: blink 1s infinite; vertical-align: -2px; margin-left: 2px; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
     /* ===== 输入区 ===== */
-    footer { padding: 12px 16px; background: var(--panel); border-top: 1px solid var(--border); }
+    footer { padding: 12px 20px; background: var(--panel); border-top: 1px solid var(--border); }
     .input-row { display: flex; gap: 10px; align-items: flex-end; }
     #input {
       flex: 1; resize: none; background: var(--input-bg); color: var(--text);
@@ -127,7 +204,12 @@
       line-height: 1.5; max-height: 160px; outline: none;
     }
     #input:focus { border-color: var(--accent); }
-    #send { height: 42px; min-width: 84px; }
+    #send {
+      height: 42px; min-width: 84px; border: none; border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; font-size: 14px; cursor: pointer; font-family: inherit;
+    }
+    #send:disabled { opacity: .5; cursor: not-allowed; }
     .status { font-size: 12px; color: var(--muted); margin-top: 6px; height: 16px; }
 
     /* ===== 设置弹窗 ===== */
@@ -153,39 +235,49 @@
     .field input:focus { border-color: var(--accent); }
     .field .tip { font-size: 11.5px; color: #666680; }
     .dialog .row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+    .dialog button { border: none; border-radius: 8px; padding: 8px 16px; font-size: 13px; cursor: pointer; font-family: inherit; background: var(--input-bg); color: var(--text); }
+    .dialog button.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
     .test-result { font-size: 12.5px; color: var(--muted); min-height: 16px; }
     .test-result.ok { color: var(--ok); }
     .test-result.bad { color: var(--err); }
+    .engine-info { font-size: 12px; color: #666680; background: #0d0d18; border-radius: 8px; padding: 8px 12px; }
   </style>
 </head>
 <body>
-  <header>
-    <div style="display:flex;align-items:center;">
-      <div class="logo">⚡ Gas Codex</div>
-      <div class="conn" id="conn">未连接</div>
-    </div>
-    <div class="actions">
-      <input id="workdir" placeholder="工作目录（如 D:\\projects\\demo）" spellcheck="false" />
-      <button id="btn-new">新对话</button>
-      <button id="btn-settings">⚙ 设置</button>
-    </div>
-  </header>
-
-  <div id="chat">
-    <div class="empty" id="empty">
-      <div class="big">Gas Codex</div>
-      <div style="font-size:13px;">输入任务，Codex 会在工作目录里读写文件、执行命令</div>
-      <div style="font-size:12px;color:#666680;">首次使用请先点 ⚙ 设置 配好 API，填好工作目录</div>
+  <!-- 侧边栏 -->
+  <div id="sidebar">
+    <div class="brand">⚡ Gas Codex</div>
+    <button id="btn-new-chat">＋ 新对话</button>
+    <div id="sessions"></div>
+    <div class="foot">
+      <span id="engine-info">引擎未装</span>
+      <button id="btn-settings" title="设置">⚙</button>
     </div>
   </div>
 
-  <footer>
-    <div class="input-row">
-      <textarea id="input" rows="1" placeholder="描述任务，Enter 发送，Shift+Enter 换行"></textarea>
-      <button id="send" class="primary">发送</button>
+  <!-- 主区 -->
+  <div id="main">
+    <header>
+      <div class="conn" id="conn">未连接</div>
+      <input id="workdir" placeholder="工作目录（如 D:\projects\demo）" spellcheck="false" />
+    </header>
+
+    <div id="chat">
+      <div class="empty" id="empty">
+        <div class="big">Gas Codex</div>
+        <div style="font-size:13px;">描述任务，Codex 会在工作目录里读写文件、执行命令</div>
+        <div style="font-size:12px;color:#666680;">首次使用请点左下角 ⚙ 完成 API 设置，填好工作目录</div>
+      </div>
     </div>
-    <div class="status" id="status"></div>
-  </footer>
+
+    <footer>
+      <div class="input-row">
+        <textarea id="input" rows="1" placeholder="描述任务，Enter 发送，Shift+Enter 换行"></textarea>
+        <button id="send">发送</button>
+      </div>
+      <div class="status" id="status"></div>
+    </footer>
+  </div>
 
   <!-- 设置弹窗 -->
   <div id="settings-overlay">
@@ -205,10 +297,11 @@
         <datalist id="model-list"></datalist>
       </div>
       <div class="field">
-        <label>codex 命令路径</label>
-        <input id="cfg-codexpath" placeholder="codex（在 PATH 里）或 C:\\...\\codex.exe" spellcheck="false" />
-        <div class="tip">Windows 安装：npm install -g @openai/codex（需 Node.js）</div>
+        <label>codex 路径（留空 = 自动管理）</label>
+        <input id="cfg-codexpath" placeholder="自动下载引擎" spellcheck="false" />
+        <div class="tip">默认自动从国内镜像下载，无需 Node.js。也可填本机 codex 命令路径覆盖。</div>
       </div>
+      <div class="engine-info" id="engine-state"></div>
       <div class="test-result" id="test-result"></div>
       <div class="row">
         <button id="btn-test">测试 API</button>
@@ -224,202 +317,328 @@
 
     const $ = (id) => document.getElementById(id);
     const chatEl = $('chat'), inputEl = $('input'), sendEl = $('send'),
-          statusEl = $('status'), connEl = $('conn'), workdirEl = $('workdir');
+          statusEl = $('status'), connEl = $('conn'), workdirEl = $('workdir'),
+          sessionsEl = $('sessions');
 
     let cfg = { baseUrl: '', apiKey: '', model: '', codexPath: '', workDir: '' };
-    let threadId = null;
     let busy = false;
-    let pendingRpc = new Map();  // id -> resolve
-    let approvalResolve = null;  // 当前审批的 resolve
+    let pendingRpc = new Map();
 
-    // ---------- 渲染 ----------
+    // ============ 会话管理（多会话） ============
+    let sessions = [];         // {id, threadId, title, running, el}
+    let activeSession = null;
+
+    function newSession() {
+      const s = { id: 's' + Date.now(), threadId: null, title: '新对话', running: false };
+      sessions.push(s);
+      renderSessions();
+      switchSession(s.id);
+      return s;
+    }
+
+    function switchSession(id) {
+      activeSession = sessions.find(s => s.id === id);
+      renderSessions();
+      renderChat();
+    }
+
+    function renderSessions() {
+      sessionsEl.innerHTML = '';
+      for (const s of sessions) {
+        const div = document.createElement('div');
+        div.className = 'session' + (s.id === activeSession?.id ? ' active' : '') + (s.running ? ' running' : '');
+        div.innerHTML = `<span class="dot"></span><span class="title"></span>`;
+        div.querySelector('.title').textContent = s.title;
+        div.onclick = () => switchSession(s.id);
+        sessionsEl.appendChild(div);
+      }
+    }
+
+    // 每个会话独立的 DOM 池：切回来还在
+    const sessionDoms = new Map();
+    function renderChat() {
+      chatEl.innerHTML = '';
+      if (!activeSession) return;
+      const dom = sessionDoms.get(activeSession.id);
+      if (dom) {
+        chatEl.appendChild(dom);
+      } else {
+        const d = document.createElement('div');
+        d.style.cssText = 'display:flex;flex-direction:column;gap:12px;flex:1;';
+        d.innerHTML = `<div class="empty" style="flex:1"><div class="big">Gas Codex</div><div style="font-size:13px;color:#8888a0">描述任务开始</div></div>`;
+        sessionDoms.set(activeSession.id, d);
+        chatEl.appendChild(d);
+      }
+    }
+    function chatPool() { return sessionDoms.get(activeSession.id); }
+
+    function setSessionTitle(s, text) {
+      s.title = text.slice(0, 18) || '新对话';
+      renderSessions();
+    }
+    function setSessionRunning(s, on) {
+      s.running = on;
+      renderSessions();
+    }
+
+    // ============ 渲染元素 ============
     function addMsg(role, text) {
-      $('empty')?.remove();
+      const pool = chatPool();
+      const empty = pool.querySelector('.empty'); if (empty) empty.remove();
       const div = document.createElement('div');
       div.className = 'msg ' + role;
-      div.textContent = text;
-      chatEl.appendChild(div);
+      if (role === 'user') div.textContent = text;
+      else div.innerHTML = mdRender(text);
+      pool.appendChild(div);
+      chatEl.scrollTop = chatEl.scrollHeight;
+      return div;
+    }
+
+    // 超轻量 markdown（标题/代码块/行内码/粗体/列表/链接）
+    function mdRender(src) {
+      const esc = (s) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const parts = [];
+      const segments = src.split(/```(\w*)\n?/);
+      // 偶数位是文本，奇数位是代码块
+      for (let i = 0; i < segments.length; i++) {
+        if (i % 2 === 1) continue; // 语言标记
+        const text = segments[i] || '';
+        const code = segments[i + 1];
+        if (code !== undefined) {
+          parts.push('<pre><code>' + esc(code) + '</code></pre>');
+        }
+        // 行内处理
+        let t = esc(text);
+        t = t.replace(/`([^`\n]+)`/g, '<code>$1</code>');
+        t = t.replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>');
+        t = t.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+        t = t.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+        t = t.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+        t = t.replace(/^\s*[-*] (.+)$/gm, '<li>$1</li>');
+        t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+        parts.push(t);
+      }
+      return parts.join('');
+    }
+
+    function addThinking() {
+      const pool = chatPool();
+      const div = document.createElement('div');
+      div.className = 'thinking';
+      div.innerHTML = `<div class="label">💭 思考中…</div><div class="body"></div>`;
+      div.onclick = () => div.classList.toggle('open');
+      pool.appendChild(div);
       chatEl.scrollTop = chatEl.scrollHeight;
       return div;
     }
 
     function addCmdCard(cmd) {
-      $('empty')?.remove();
+      const pool = chatPool();
       const card = document.createElement('div');
       card.className = 'cmd-card';
       card.innerHTML = `
-        <div class="head"><span class="icon">❯</span><span class="cmd-text"></span><span class="status" style="margin-left:auto;">运行中…</span></div>
-        <div class="body" style="display:none;"></div>`;
+        <div class="head"><span>❯</span><span class="cmd-text"></span><span class="status">运行中…</span></div>
+        <div class="body"></div>`;
       card.querySelector('.cmd-text').textContent = cmd;
-      chatEl.appendChild(card);
+      pool.appendChild(card);
       chatEl.scrollTop = chatEl.scrollHeight;
       return card;
     }
 
     function setStatus(t) { statusEl.textContent = t; }
-    function setConn(on, text) {
-      connEl.className = 'conn' + (on ? ' on' : '');
-      connEl.textContent = text;
-    }
+    function setConn(on, text) { connEl.className = 'conn' + (on ? ' on' : ''); connEl.textContent = text; }
 
-    // ---------- codex 事件流 ----------
+    // ============ codex 事件流 ============
     listen('codex-event', (e) => {
       const evt = e.payload;
       const method = evt.method || '';
+      const params = evt.params || {};
 
-      // RPC 响应（带 id）
+      // RPC 响应
       if (evt.id !== undefined && evt.result !== undefined && pendingRpc.has(evt.id)) {
         pendingRpc.get(evt.id)(evt.result);
         pendingRpc.delete(evt.id);
       }
+      // RPC 错误
+      if (evt.id !== undefined && evt.error !== undefined && pendingRpc.has(evt.id)) {
+        pendingRpc.get(evt.id)(null);
+        pendingRpc.delete(evt.id);
+      }
 
-      // 服务端请求：审批
+      // 按 threadId 找到会话（不切换当前视图，后台会话照样收）
+      const tid = params.threadId;
+      const s = sessions.find(x => x.threadId === tid);
+      if (s && s !== activeSession) {
+        // 后台会话：只更新运行状态
+        if (method === 'turn/completed') setSessionRunning(s, false);
+        return;
+      }
+      const pool = chatPool();
+      if (!pool) return;
+
+      // 审批请求
       if (method === 'execCommandApproval') {
-        showApproval(evt, '命令执行审批', evt.params?.command?.command || JSON.stringify(evt.params));
+        showApproval(evt, '命令执行审批', params?.command?.command || JSON.stringify(params));
       } else if (method === 'applyPatchApproval') {
-        showApproval(evt, '文件修改审批', evt.params?.changes?.map(c => c.path).join('\n') || '文件变更');
+        showApproval(evt, '文件修改审批', params?.changes?.map(c => c.path).join('\n') || '文件变更');
       }
 
-      // 通知：item 流
-      if (method === 'item/started' || method === 'item/updated' || method === 'item/completed') {
-        handleItem(evt.params?.item || {}, method);
-      }
-      if (method === 'turn/completed') {
-        busy = false;
-        sendEl.disabled = false;
-        setStatus('');
-      }
-      if (method === 'error') {
-        addMsg('error', 'codex: ' + (evt.params?.error?.message || JSON.stringify(evt.params)));
-        busy = false; sendEl.disabled = false; setStatus('');
-      }
+      // item 生命周期
+      if (method.startsWith('item/')) handleItem(method, params.item || {}, params);
     });
 
-    // item 类型分派渲染
-    const cmdCards = new Map();  // itemId -> card element
-    function handleItem(item, phase) {
+    const cmdCards = new Map();
+    const agentMsgEls = new Map();
+    const thinkEls = new Map();
+
+    function handleItem(method, item, params) {
+      const pool = chatPool();
+      const m = method.split('/')[1]; // started|updated|completed|agentMessage|commandExecution|reasoning...
+
+      // 流式 delta：item/agentMessage/delta
+      if (method === 'item/agentMessage/delta') {
+        let el = agentMsgEls.get(params.itemId);
+        if (!el) {
+          const empty = pool.querySelector('.empty'); if (empty) empty.remove();
+          el = document.createElement('div');
+          el.className = 'msg assistant';
+          el.innerHTML = '<span class="text"></span><span class="typing-cursor"></span>';
+          pool.appendChild(el);
+          agentMsgEls.set(params.itemId, el);
+        }
+        const textEl = el.querySelector('.text');
+        textEl.textContent += (params.delta || '');
+        el.innerHTML = mdRender(textEl.textContent) + '<span class="typing-cursor"></span>';
+        chatEl.scrollTop = chatEl.scrollHeight;
+        return;
+      }
+      // 命令实时输出：item/commandExecution/outputDelta
+      if (method === 'item/commandExecution/outputDelta') {
+        let card = cmdCards.get(params.itemId);
+        if (card) {
+          const body = card.querySelector('.body');
+          body.textContent += (params.delta || '');
+          card.classList.add('has-output');
+          body.scrollTop = body.scrollHeight;
+          chatEl.scrollTop = chatEl.scrollHeight;
+        }
+        return;
+      }
+      // 思考流：item/reasoning/summaryTextDelta
+      if (method === 'item/reasoning/summaryTextDelta') {
+        let el = thinkEls.get(params.itemId);
+        if (!el) {
+          el = addThinking();
+          thinkEls.set(params.itemId, el);
+        }
+        el.querySelector('.label').textContent = '💭 思考中（点击展开）';
+        const body = el.querySelector('.body');
+        body.textContent += (params.delta || '');
+        if (!el.classList.contains('open')) el.classList.add('open');
+        chatEl.scrollTop = chatEl.scrollHeight;
+        return;
+      }
+
       switch (item.type) {
         case 'agentMessage': {
-          // 最终回复文本
-          let text = '';
-          for (const c of (item.content || [])) {
-            if (c.type === 'text') text += c.text;
-          }
-          if (!text && item.text) text = item.text;
-          if (text) {
-            let el = document.getElementById('msg-' + item.id);
-            if (!el) {
-              el = addMsg('assistant', text);
-              el.id = 'msg-' + item.id;
-            } else {
-              el.textContent = text;
-            }
+          const text = (item.content || []).filter(c => c.type === 'text').map(c => c.text).join('') || item.text || '';
+          if (text && m === 'completed') {
+            let el = agentMsgEls.get(item.id);
+            if (!el) { el = addMsg('assistant', text); }
+            else { el.innerHTML = mdRender(text); } // 收尾：去掉光标
             chatEl.scrollTop = chatEl.scrollHeight;
           }
           break;
         }
         case 'commandExecution': {
           let card = cmdCards.get(item.id);
-          if (!card) {
+          if (!card && (m === 'started' || m === 'updated')) {
             card = addCmdCard(item.command || '');
             cmdCards.set(item.id, card);
           }
-          if (phase === 'item/completed') {
-            const head = card.querySelector('.status');
-            if (item.exitCode === 0 || item.exitCode == null) {
-              card.classList.add('exit-ok');
-              head.textContent = '✓ 完成';
-            } else {
-              card.classList.add('exit-err');
-              head.textContent = '✗ 退出码 ' + item.exitCode;
+          if (m === 'completed' && card) {
+            card.classList.add(item.exitCode === 0 ? 'exit-ok' : 'exit-err');
+            card.querySelector('.status').textContent = item.exitCode === 0 ? '✓ 完成' : '✗ 退出码 ' + item.exitCode;
+            if (item.aggregatedOutput) {
+              const body = card.querySelector('.body');
+              body.textContent = item.aggregatedOutput;
+              card.classList.add('has-output');
             }
-            const body = card.querySelector('.body');
-            if (item.aggregatedOutput || item.stdout) {
-              body.textContent = item.aggregatedOutput || item.stdout;
-              body.style.display = '';
-              chatEl.scrollTop = chatEl.scrollHeight;
-            }
+            chatEl.scrollTop = chatEl.scrollHeight;
           }
           break;
         }
         case 'fileChange': case 'patch': {
-          const paths = (item.changes || []).map(c => (c.kind || '') + ' ' + (c.path || '')).join('\n');
-          if (paths && phase === 'item/completed') addMsg('assistant', '📄 文件变更：\n' + paths);
-          break;
-        }
-        case 'reasoning': {
-          setStatus('思考中…');
+          if (m === 'completed') {
+            const paths = (item.changes || []).map(c => (c.kind || '') + ' ' + (c.path || '')).join('\n');
+            if (paths) addMsg('assistant', '📄 文件变更：\n```\n' + paths + '\n```');
+          }
           break;
         }
       }
+
+      if (method === 'turn/completed') {
+        busy = false; sendEl.disabled = false; setStatus('');
+        if (activeSession) setSessionRunning(activeSession, false);
+      }
+      if (method === 'error') {
+        addMsg('error', 'codex: ' + (params?.error?.message || JSON.stringify(params)));
+        busy = false; sendEl.disabled = false; setStatus('');
+      }
     }
 
-    // 审批弹窗（内联卡片）
     function showApproval(evt, title, detail) {
-      $('empty')?.remove();
+      const pool = chatPool();
       const div = document.createElement('div');
       div.className = 'approval';
       div.innerHTML = `
         <div class="title">🔐 ${title}</div>
         <div class="cmd"></div>
         <div class="row">
-          <button class="danger" data-deny>拒绝</button>
-          <button class="approve" data-accept>允许执行</button>
+          <button class="danger">拒绝</button>
+          <button class="approve">允许执行</button>
         </div>`;
       div.querySelector('.cmd').textContent = detail;
-      chatEl.appendChild(div);
+      pool.appendChild(div);
       chatEl.scrollTop = chatEl.scrollHeight;
 
       const respond = (decision) => {
-        // 原样回传 JSON-RPC 响应
-        const reply = { id: evt.id, result: { decision } };
-        invoke('codex_send_raw', { message: reply }).catch(console.error);
+        invoke('codex_send_raw', { message: { id: evt.id, result: { decision } } }).catch(console.error);
         div.remove();
       };
-      div.querySelector('[data-accept]').onclick = () => respond({ type: 'selected', 'variant': 'accept' });
-      div.querySelector('[data-deny]').onclick = () => respond({ type: 'selected', 'variant': 'deny' });
+      div.querySelector('.approve').onclick = () => respond({ type: 'selected', variant: 'accept' });
+      div.querySelector('.danger').onclick = () => respond({ type: 'selected', variant: 'deny' });
     }
 
-    // ---------- RPC 封装 ----------
+    // ============ RPC ============
     function rpc(method, params) {
       return new Promise(async (resolve, reject) => {
         try {
           const { id } = await invoke('codex_send', { method, params });
           pendingRpc.set(id, resolve);
-          // 超时保护
           setTimeout(() => {
-            if (pendingRpc.has(id)) {
-              pendingRpc.delete(id);
-              reject(new Error('RPC 超时: ' + method));
-            }
-          }, 120000);
+            if (pendingRpc.has(id)) { pendingRpc.delete(id); reject(new Error('RPC 超时: ' + method)); }
+          }, 180000);
         } catch (e) { reject(e); }
       });
     }
 
-    // ---------- 启动流程 ----------
+    let engineReady = false;
     async function ensureStarted() {
-      if (connEl.classList.contains('on')) return true;
-      // 0. 引擎没装则先自动安装（国内镜像）
+      if (engineReady) return true;
       try {
         const installed = await invoke('is_engine_installed');
         if (!installed) {
-          setStatus('首次运行：正在下载 codex 引擎（约140MB，走国内镜像）…');
+          setStatus('首次运行：正在下载 codex 引擎（约140MB，国内镜像）…');
           await invoke('install_engine');
+          await refreshEngineInfo();
           setStatus('引擎安装完成');
         }
-      } catch (e) {
-        addMsg('error', '引擎自动安装失败：' + e + '\n可手动安装：npm install -g @openai/codex，然后在设置里填 codex 路径');
-        return false;
-      }
-      try {
         await invoke('codex_start');
-        // initialize 握手
-        const init = await rpc('initialize', {
-          clientInfo: { name: 'gas-codex', title: 'Gas Codex', version: '0.2.0' }
-        });
+        await rpc('initialize', { clientInfo: { name: 'gas-codex', title: 'Gas Codex', version: '0.3.0' } });
         await invoke('codex_send', { method: 'initialized', params: {} });
-        setConn(true, `已连接 (${cfg.model})`);
+        engineReady = true;
+        setConn(true, `已连接 · ${cfg.model}`);
         return true;
       } catch (e) {
         addMsg('error', String(e));
@@ -427,40 +646,39 @@
       }
     }
 
-    // ---------- 发送 ----------
+    // ============ 发送 ============
     async function send() {
       const text = inputEl.value.trim();
       if (!text || busy) return;
 
-      if (!cfg.baseUrl || !cfg.apiKey) {
-        openSettings(); setStatus('请先完成设置'); return;
-      }
+      if (!cfg.baseUrl || !cfg.apiKey) { openSettings(); setStatus('请先完成设置'); return; }
       const cwd = workdirEl.value.trim() || cfg.workDir;
       if (!cwd) { setStatus('请先填写顶部的工作目录'); return; }
 
+      if (!activeSession) newSession();
       busy = true; sendEl.disabled = true;
       inputEl.value = ''; autoGrow();
 
       if (!(await ensureStarted())) { busy = false; sendEl.disabled = false; return; }
 
+      const s = activeSession;
       addMsg('user', text);
+      setSessionTitle(s, text);
+      setSessionRunning(s, true);
 
       try {
-        // 没有线程则创建
-        if (!threadId) {
+        if (!s.threadId) {
           const res = await rpc('thread/start', { cwd, sandbox: 'workspace-write' });
-          threadId = res.thread?.id || res.threadId;
+          s.threadId = res.thread?.id || res.threadId;
         }
         setStatus('任务进行中…');
-        await rpc('turn/start', {
-          threadId,
-          input: [{ type: 'text', text }],
-        });
+        await rpc('turn/start', { threadId: s.threadId, input: [{ type: 'text', text }] });
       } catch (e) {
         addMsg('error', String(e));
         setStatus('');
+        setSessionRunning(s, false);
+        busy = false; sendEl.disabled = false;
       }
-      // busy 由 turn/completed 事件复位
     }
 
     sendEl.onclick = send;
@@ -473,25 +691,24 @@
     }
     inputEl.addEventListener('input', autoGrow);
 
-    // ---------- 新对话 ----------
-    $('btn-new').onclick = () => {
-      if (busy) return;
-      threadId = null;
-      cmdCards.clear();
-      chatEl.innerHTML = `
-        <div class="empty" id="empty">
-          <div class="big">Gas Codex</div>
-          <div style="font-size:13px;">新对话已开始</div>
-        </div>`;
-    };
+    // ============ 设置 ============
+    async function refreshEngineInfo() {
+      try {
+        const installed = await invoke('is_engine_installed');
+        $('engine-info').textContent = installed ? '引擎 v0.153.0 ✓' : '引擎未装（发送时自动下载）';
+        $('engine-state').textContent = installed
+          ? '✓ codex 引擎已安装（v0.153.0，位于 ~/.gas-codex/engine）'
+          : '引擎未安装，首次发送消息时自动下载';
+      } catch {}
+    }
 
-    // ---------- 设置 ----------
     function openSettings() {
       $('cfg-baseurl').value = cfg.baseUrl;
       $('cfg-apikey').value = cfg.apiKey;
       $('cfg-model').value = cfg.model;
-      $('cfg-codexpath').value = cfg.codexPath;
+      $('cfg-codexpath').value = cfg.codexPath === 'codex' ? '' : cfg.codexPath;
       $('test-result').textContent = '';
+      refreshEngineInfo();
       $('settings-overlay').classList.add('open');
     }
     $('btn-settings').onclick = openSettings;
@@ -511,10 +728,10 @@
       cfg = readForm();
       await invoke('save_config', { cfg });
       $('settings-overlay').classList.remove('open');
-      // 重启引擎使配置生效
       await invoke('codex_stop').catch(() => {});
+      engineReady = false;
       setConn(false, '未连接');
-      threadId = null;
+      for (const s of sessions) { s.threadId = null; }
       setStatus('设置已保存，下次发送时自动重连');
     };
 
@@ -527,22 +744,24 @@
         el.className = 'test-result ok';
         el.textContent = `✓ API 连通，${models.length} 个模型可用`;
         const list = $('model-list'); list.innerHTML = '';
-        models.forEach(m => {
-          const o = document.createElement('option'); o.value = m; list.appendChild(o);
-        });
+        models.forEach(m => { const o = document.createElement('option'); o.value = m; list.appendChild(o); });
       } catch (e) {
         el.className = 'test-result bad'; el.textContent = '✗ ' + e;
       }
     };
 
-    // ---------- 启动 ----------
+    // ============ 启动 ============
+    $('btn-new-chat').onclick = () => { if (!busy) newSession(); };
+
     (async () => {
       try {
         cfg = await invoke('load_config');
         workdirEl.value = cfg.workDir || '';
-        if (cfg.model) setConn(false, `就绪 (${cfg.model})`);
+        if (cfg.model) setConn(false, `就绪 · ${cfg.model}`);
         if (!cfg.baseUrl) openSettings();
       } catch (e) { console.error(e); }
+      refreshEngineInfo();
+      newSession();  // 默认开一个会话
       inputEl.focus();
     })();
   </script>

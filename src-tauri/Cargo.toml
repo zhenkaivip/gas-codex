@@ -1,6 +1,6 @@
 [package]
 name = "gas-codex"
-version = "0.2.1"
+version = "0.2.2"
 description = "Gas Codex - AI coding client"
 edition = "2021"
 
