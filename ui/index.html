@@ -5,38 +5,534 @@
   <title>Gas Codex</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #1a1a2e; --panel: #16162a; --input-bg: #23233f;
+      --border: #2a2a45; --text: #e0e0e0; --muted: #8888a0;
+      --accent: #4f8cff; --accent2: #9d5cff; --err: #ff6b6b; --ok: #6bff9e;
+    }
+    html, body { height: 100%; }
     body {
       font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: #1a1a2e;
-      color: #e0e0e0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
+      background: var(--bg); color: var(--text);
+      display: flex; flex-direction: column; overflow: hidden;
     }
-    .card {
-      text-align: center;
+
+    /* ===== 顶栏 ===== */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; background: var(--panel);
+      border-bottom: 1px solid var(--border); user-select: none;
     }
-    h1 {
-      font-size: 42px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #4f8cff, #9d5cff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 12px;
+    .logo {
+      font-size: 16px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    p {
-      font-size: 16px;
-      color: #8888a0;
+    .conn { font-size: 12px; color: var(--muted); margin-left: 12px; }
+    .conn.on { color: var(--ok); }
+    header .actions { display: flex; gap: 8px; align-items: center; }
+    button {
+      border: none; border-radius: 8px; padding: 7px 14px; font-size: 13px;
+      cursor: pointer; background: var(--input-bg); color: var(--text);
+      transition: filter .15s; font-family: inherit;
     }
+    button:hover { filter: brightness(1.25); }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    button.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
+    button.danger { background: #5b2330; color: #ff9c9c; }
+    button.approve { background: #1d4d34; color: var(--ok); }
+    #workdir {
+      background: var(--input-bg); color: var(--muted); border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 10px; font-size: 12.5px; width: 220px;
+      outline: none; font-family: inherit;
+    }
+
+    /* ===== 消息区 ===== */
+    #chat {
+      flex: 1; overflow-y: auto; padding: 20px 16px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    #chat::-webkit-scrollbar { width: 8px; }
+    #chat::-webkit-scrollbar-thumb { background: #33335a; border-radius: 4px; }
+
+    .msg {
+      max-width: 82%; padding: 10px 14px; border-radius: 12px;
+      line-height: 1.65; font-size: 14.5px; white-space: pre-wrap;
+      word-break: break-word; user-select: text;
+    }
+    .msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #2b4a8b, #4a2b8b);
+      border-bottom-right-radius: 4px;
+    }
+    .msg.assistant {
+      align-self: flex-start; background: var(--panel);
+      border: 1px solid var(--border); border-bottom-left-radius: 4px;
+    }
+    .msg.error {
+      align-self: center; background: transparent; color: var(--err);
+      border: 1px dashed var(--err); font-size: 13px; max-width: 90%;
+    }
+
+    /* 命令执行卡片 */
+    .cmd-card {
+      align-self: flex-start; max-width: 82%;
+      background: #12121f; border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden; font-size: 13px;
+    }
+    .cmd-card .head {
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 12px; background: #1c1c33;
+      font-family: Consolas, monospace; color: #9db4ff;
+    }
+    .cmd-card .head .icon { font-size: 13px; }
+    .cmd-card .body {
+      padding: 8px 12px; font-family: Consolas, monospace;
+      color: var(--muted); white-space: pre-wrap; max-height: 200px; overflow-y: auto;
+    }
+    .cmd-card.exit-ok .head .status { color: var(--ok); }
+    .cmd-card.exit-err .head .status { color: var(--err); }
+
+    /* 审批请求卡片 */
+    .approval {
+      align-self: center; max-width: 88%;
+      background: #2b2300; border: 1px solid #6b5a00;
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .approval .title { font-size: 14px; font-weight: 600; color: #ffd66b; margin-bottom: 8px; }
+    .approval .cmd {
+      font-family: Consolas, monospace; font-size: 13px;
+      background: #000; padding: 8px 10px; border-radius: 6px;
+      margin-bottom: 10px; white-space: pre-wrap; word-break: break-all;
+    }
+    .approval .row { display: flex; gap: 10px; justify-content: flex-end; }
+
+    .empty {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px; color: var(--muted);
+    }
+    .empty .big {
+      font-size: 40px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ===== 输入区 ===== */
+    footer { padding: 12px 16px; background: var(--panel); border-top: 1px solid var(--border); }
+    .input-row { display: flex; gap: 10px; align-items: flex-end; }
+    #input {
+      flex: 1; resize: none; background: var(--input-bg); color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 14px; font-size: 14.5px; font-family: inherit;
+      line-height: 1.5; max-height: 160px; outline: none;
+    }
+    #input:focus { border-color: var(--accent); }
+    #send { height: 42px; min-width: 84px; }
+    .status { font-size: 12px; color: var(--muted); margin-top: 6px; height: 16px; }
+
+    /* ===== 设置弹窗 ===== */
+    #settings-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.55);
+      display: none; align-items: center; justify-content: center; z-index: 10;
+    }
+    #settings-overlay.open { display: flex; }
+    .dialog {
+      width: min(500px, 92vw); background: var(--panel);
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 22px; display: flex; flex-direction: column; gap: 13px;
+      max-height: 88vh; overflow-y: auto;
+    }
+    .dialog h2 { font-size: 17px; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-size: 12.5px; color: var(--muted); }
+    .field input {
+      background: var(--input-bg); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); padding: 9px 12px;
+      font-size: 14px; outline: none;
+    }
+    .field input:focus { border-color: var(--accent); }
+    .field .tip { font-size: 11.5px; color: #666680; }
+    .dialog .row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+    .test-result { font-size: 12.5px; color: var(--muted); min-height: 16px; }
+    .test-result.ok { color: var(--ok); }
+    .test-result.bad { color: var(--err); }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Hello, Gas Codex!</h1>
-    <p>Windows + macOS · Tauri 2 · v0.1.0</p>
+  <header>
+    <div style="display:flex;align-items:center;">
+      <div class="logo">⚡ Gas Codex</div>
+      <div class="conn" id="conn">未连接</div>
+    </div>
+    <div class="actions">
+      <input id="workdir" placeholder="工作目录（如 D:\\projects\\demo）" spellcheck="false" />
+      <button id="btn-new">新对话</button>
+      <button id="btn-settings">⚙ 设置</button>
+    </div>
+  </header>
+
+  <div id="chat">
+    <div class="empty" id="empty">
+      <div class="big">Gas Codex</div>
+      <div style="font-size:13px;">输入任务，Codex 会在工作目录里读写文件、执行命令</div>
+      <div style="font-size:12px;color:#666680;">首次使用请先点 ⚙ 设置 配好 API，填好工作目录</div>
+    </div>
   </div>
+
+  <footer>
+    <div class="input-row">
+      <textarea id="input" rows="1" placeholder="描述任务，Enter 发送，Shift+Enter 换行"></textarea>
+      <button id="send" class="primary">发送</button>
+    </div>
+    <div class="status" id="status"></div>
+  </footer>
+
+  <!-- 设置弹窗 -->
+  <div id="settings-overlay">
+    <div class="dialog">
+      <h2>设置</h2>
+      <div class="field">
+        <label>API 地址（OpenAI Responses 兼容，如 https://www.dmxapi.cn/v1）</label>
+        <input id="cfg-baseurl" placeholder="https://your-api.com/v1" spellcheck="false" />
+      </div>
+      <div class="field">
+        <label>API Key</label>
+        <input id="cfg-apikey" type="password" placeholder="sk-..." spellcheck="false" />
+      </div>
+      <div class="field">
+        <label>模型</label>
+        <input id="cfg-model" placeholder="deepseek-v4-flash-guan" spellcheck="false" list="model-list" />
+        <datalist id="model-list"></datalist>
+      </div>
+      <div class="field">
+        <label>codex 命令路径</label>
+        <input id="cfg-codexpath" placeholder="codex（在 PATH 里）或 C:\\...\\codex.exe" spellcheck="false" />
+        <div class="tip">Windows 安装：npm install -g @openai/codex（需 Node.js）</div>
+      </div>
+      <div class="test-result" id="test-result"></div>
+      <div class="row">
+        <button id="btn-test">测试 API</button>
+        <button id="btn-cancel">取消</button>
+        <button id="btn-save" class="primary">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    const { invoke } = window.__TAURI__.core;
+    const { listen } = window.__TAURI__.event;
+
+    const $ = (id) => document.getElementById(id);
+    const chatEl = $('chat'), inputEl = $('input'), sendEl = $('send'),
+          statusEl = $('status'), connEl = $('conn'), workdirEl = $('workdir');
+
+    let cfg = { baseUrl: '', apiKey: '', model: '', codexPath: '', workDir: '' };
+    let threadId = null;
+    let busy = false;
+    let pendingRpc = new Map();  // id -> resolve
+    let approvalResolve = null;  // 当前审批的 resolve
+
+    // ---------- 渲染 ----------
+    function addMsg(role, text) {
+      $('empty')?.remove();
+      const div = document.createElement('div');
+      div.className = 'msg ' + role;
+      div.textContent = text;
+      chatEl.appendChild(div);
+      chatEl.scrollTop = chatEl.scrollHeight;
+      return div;
+    }
+
+    function addCmdCard(cmd) {
+      $('empty')?.remove();
+      const card = document.createElement('div');
+      card.className = 'cmd-card';
+      card.innerHTML = `
+        <div class="head"><span class="icon">❯</span><span class="cmd-text"></span><span class="status" style="margin-left:auto;">运行中…</span></div>
+        <div class="body" style="display:none;"></div>`;
+      card.querySelector('.cmd-text').textContent = cmd;
+      chatEl.appendChild(card);
+      chatEl.scrollTop = chatEl.scrollHeight;
+      return card;
+    }
+
+    function setStatus(t) { statusEl.textContent = t; }
+    function setConn(on, text) {
+      connEl.className = 'conn' + (on ? ' on' : '');
+      connEl.textContent = text;
+    }
+
+    // ---------- codex 事件流 ----------
+    listen('codex-event', (e) => {
+      const evt = e.payload;
+      const method = evt.method || '';
+
+      // RPC 响应（带 id）
+      if (evt.id !== undefined && evt.result !== undefined && pendingRpc.has(evt.id)) {
+        pendingRpc.get(evt.id)(evt.result);
+        pendingRpc.delete(evt.id);
+      }
+
+      // 服务端请求：审批
+      if (method === 'execCommandApproval') {
+        showApproval(evt, '命令执行审批', evt.params?.command?.command || JSON.stringify(evt.params));
+      } else if (method === 'applyPatchApproval') {
+        showApproval(evt, '文件修改审批', evt.params?.changes?.map(c => c.path).join('\n') || '文件变更');
+      }
+
+      // 通知：item 流
+      if (method === 'item/started' || method === 'item/updated' || method === 'item/completed') {
+        handleItem(evt.params?.item || {}, method);
+      }
+      if (method === 'turn/completed') {
+        busy = false;
+        sendEl.disabled = false;
+        setStatus('');
+      }
+      if (method === 'error') {
+        addMsg('error', 'codex: ' + (evt.params?.error?.message || JSON.stringify(evt.params)));
+        busy = false; sendEl.disabled = false; setStatus('');
+      }
+    });
+
+    // item 类型分派渲染
+    const cmdCards = new Map();  // itemId -> card element
+    function handleItem(item, phase) {
+      switch (item.type) {
+        case 'agentMessage': {
+          // 最终回复文本
+          let text = '';
+          for (const c of (item.content || [])) {
+            if (c.type === 'text') text += c.text;
+          }
+          if (!text && item.text) text = item.text;
+          if (text) {
+            let el = document.getElementById('msg-' + item.id);
+            if (!el) {
+              el = addMsg('assistant', text);
+              el.id = 'msg-' + item.id;
+            } else {
+              el.textContent = text;
+            }
+            chatEl.scrollTop = chatEl.scrollHeight;
+          }
+          break;
+        }
+        case 'commandExecution': {
+          let card = cmdCards.get(item.id);
+          if (!card) {
+            card = addCmdCard(item.command || '');
+            cmdCards.set(item.id, card);
+          }
+          if (phase === 'item/completed') {
+            const head = card.querySelector('.status');
+            if (item.exitCode === 0 || item.exitCode == null) {
+              card.classList.add('exit-ok');
+              head.textContent = '✓ 完成';
+            } else {
+              card.classList.add('exit-err');
+              head.textContent = '✗ 退出码 ' + item.exitCode;
+            }
+            const body = card.querySelector('.body');
+            if (item.aggregatedOutput || item.stdout) {
+              body.textContent = item.aggregatedOutput || item.stdout;
+              body.style.display = '';
+              chatEl.scrollTop = chatEl.scrollHeight;
+            }
+          }
+          break;
+        }
+        case 'fileChange': case 'patch': {
+          const paths = (item.changes || []).map(c => (c.kind || '') + ' ' + (c.path || '')).join('\n');
+          if (paths && phase === 'item/completed') addMsg('assistant', '📄 文件变更：\n' + paths);
+          break;
+        }
+        case 'reasoning': {
+          setStatus('思考中…');
+          break;
+        }
+      }
+    }
+
+    // 审批弹窗（内联卡片）
+    function showApproval(evt, title, detail) {
+      $('empty')?.remove();
+      const div = document.createElement('div');
+      div.className = 'approval';
+      div.innerHTML = `
+        <div class="title">🔐 ${title}</div>
+        <div class="cmd"></div>
+        <div class="row">
+          <button class="danger" data-deny>拒绝</button>
+          <button class="approve" data-accept>允许执行</button>
+        </div>`;
+      div.querySelector('.cmd').textContent = detail;
+      chatEl.appendChild(div);
+      chatEl.scrollTop = chatEl.scrollHeight;
+
+      const respond = (decision) => {
+        // 原样回传 JSON-RPC 响应
+        const reply = { id: evt.id, result: { decision } };
+        invoke('codex_send_raw', { message: reply }).catch(console.error);
+        div.remove();
+      };
+      div.querySelector('[data-accept]').onclick = () => respond({ type: 'selected', 'variant': 'accept' });
+      div.querySelector('[data-deny]').onclick = () => respond({ type: 'selected', 'variant': 'deny' });
+    }
+
+    // ---------- RPC 封装 ----------
+    function rpc(method, params) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const { id } = await invoke('codex_send', { method, params });
+          pendingRpc.set(id, resolve);
+          // 超时保护
+          setTimeout(() => {
+            if (pendingRpc.has(id)) {
+              pendingRpc.delete(id);
+              reject(new Error('RPC 超时: ' + method));
+            }
+          }, 120000);
+        } catch (e) { reject(e); }
+      });
+    }
+
+    // ---------- 启动流程 ----------
+    async function ensureStarted() {
+      if (connEl.classList.contains('on')) return true;
+      try {
+        await invoke('codex_start');
+        // initialize 握手
+        const init = await rpc('initialize', {
+          clientInfo: { name: 'gas-codex', title: 'Gas Codex', version: '0.2.0' }
+        });
+        await invoke('codex_send', { method: 'initialized', params: {} });
+        setConn(true, `已连接 (${cfg.model})`);
+        return true;
+      } catch (e) {
+        addMsg('error', String(e));
+        return false;
+      }
+    }
+
+    // ---------- 发送 ----------
+    async function send() {
+      const text = inputEl.value.trim();
+      if (!text || busy) return;
+
+      if (!cfg.baseUrl || !cfg.apiKey) {
+        openSettings(); setStatus('请先完成设置'); return;
+      }
+      const cwd = workdirEl.value.trim() || cfg.workDir;
+      if (!cwd) { setStatus('请先填写顶部的工作目录'); return; }
+
+      busy = true; sendEl.disabled = true;
+      inputEl.value = ''; autoGrow();
+
+      if (!(await ensureStarted())) { busy = false; sendEl.disabled = false; return; }
+
+      addMsg('user', text);
+
+      try {
+        // 没有线程则创建
+        if (!threadId) {
+          const res = await rpc('thread/start', { cwd, sandbox: 'workspace-write' });
+          threadId = res.thread?.id || res.threadId;
+        }
+        setStatus('任务进行中…');
+        await rpc('turn/start', {
+          threadId,
+          input: [{ type: 'text', text }],
+        });
+      } catch (e) {
+        addMsg('error', String(e));
+        setStatus('');
+      }
+      // busy 由 turn/completed 事件复位
+    }
+
+    sendEl.onclick = send;
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+    });
+    function autoGrow() {
+      inputEl.style.height = 'auto';
+      inputEl.style.height = Math.min(inputEl.scrollHeight, 160) + 'px';
+    }
+    inputEl.addEventListener('input', autoGrow);
+
+    // ---------- 新对话 ----------
+    $('btn-new').onclick = () => {
+      if (busy) return;
+      threadId = null;
+      cmdCards.clear();
+      chatEl.innerHTML = `
+        <div class="empty" id="empty">
+          <div class="big">Gas Codex</div>
+          <div style="font-size:13px;">新对话已开始</div>
+        </div>`;
+    };
+
+    // ---------- 设置 ----------
+    function openSettings() {
+      $('cfg-baseurl').value = cfg.baseUrl;
+      $('cfg-apikey').value = cfg.apiKey;
+      $('cfg-model').value = cfg.model;
+      $('cfg-codexpath').value = cfg.codexPath;
+      $('test-result').textContent = '';
+      $('settings-overlay').classList.add('open');
+    }
+    $('btn-settings').onclick = openSettings;
+    $('btn-cancel').onclick = () => $('settings-overlay').classList.remove('open');
+
+    function readForm() {
+      return {
+        baseUrl: $('cfg-baseurl').value.trim(),
+        apiKey: $('cfg-apikey').value.trim(),
+        model: $('cfg-model').value.trim() || 'deepseek-v4-flash-guan',
+        codexPath: $('cfg-codexpath').value.trim() || 'codex',
+        workDir: workdirEl.value.trim(),
+      };
+    }
+
+    $('btn-save').onclick = async () => {
+      cfg = readForm();
+      await invoke('save_config', { cfg });
+      $('settings-overlay').classList.remove('open');
+      // 重启引擎使配置生效
+      await invoke('codex_stop').catch(() => {});
+      setConn(false, '未连接');
+      threadId = null;
+      setStatus('设置已保存，下次发送时自动重连');
+    };
+
+    $('btn-test').onclick = async () => {
+      const c = readForm();
+      const el = $('test-result');
+      el.className = 'test-result'; el.textContent = '连接中…';
+      try {
+        const models = await invoke('test_connection', { cfg: c });
+        el.className = 'test-result ok';
+        el.textContent = `✓ API 连通，${models.length} 个模型可用`;
+        const list = $('model-list'); list.innerHTML = '';
+        models.forEach(m => {
+          const o = document.createElement('option'); o.value = m; list.appendChild(o);
+        });
+      } catch (e) {
+        el.className = 'test-result bad'; el.textContent = '✗ ' + e;
+      }
+    };
+
+    // ---------- 启动 ----------
+    (async () => {
+      try {
+        cfg = await invoke('load_config');
+        workdirEl.value = cfg.workDir || '';
+        if (cfg.model) setConn(false, `就绪 (${cfg.model})`);
+        if (!cfg.baseUrl) openSettings();
+      } catch (e) { console.error(e); }
+      inputEl.focus();
+    })();
+  </script>
 </body>
 </html>

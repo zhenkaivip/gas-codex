@@ -1,0 +1,11 @@
+cargo:rerun-if-changed=permissions
+cargo:PERMISSION_FILES_PATH=/root/codex_client/gas-codex/src-tauri/target/debug/build/tauri-plugin-shell-006966fd53b5f68b/out/tauri-plugin-shell-permission-files
+cargo:rerun-if-env-changed=REMOVE_UNUSED_COMMANDS
+cargo:GLOBAL_SCOPE_SCHEMA_PATH=/root/codex_client/gas-codex/src-tauri/target/debug/build/tauri-plugin-shell-006966fd53b5f68b/out/global-scope.json
+cargo:GLOBAL_API_SCRIPT_PATH=/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/api-iife.js
+cargo:rustc-check-cfg=cfg(mobile)
+cargo:rustc-check-cfg=cfg(desktop)
+cargo:rustc-cfg=desktop
+cargo:rustc-check-cfg=cfg(desktop)
+cargo:rustc-cfg=desktop
+cargo:rustc-check-cfg=cfg(mobile)
