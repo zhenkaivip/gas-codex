@@ -1,0 +1,51 @@
+name: Release
+
+# 手动触发 或 推送 tag 时触发
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows-latest   # 出 .exe / .msi
+            args: ''
+          - platform: macos-latest     # 出 .dmg / .app（Intel + Apple Silicon）
+            args: '--target aarch64-apple-darwin,x86_64-apple-darwin'
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust 缓存
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: 构建 Tauri 应用
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: .
+          tagName: ${{ github.ref_name }}
+          releaseName: 'Gas Codex ${{ github.ref_name }}'
+          releaseBody: 'Windows / macOS 安装包。Windows 首次运行如遇 SmartScreen 提示，选"仍要运行"；macOS 首次打开需右键→打开。'
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}
