@@ -400,6 +400,18 @@
     // ---------- 启动流程 ----------
     async function ensureStarted() {
       if (connEl.classList.contains('on')) return true;
+      // 0. 引擎没装则先自动安装（国内镜像）
+      try {
+        const installed = await invoke('is_engine_installed');
+        if (!installed) {
+          setStatus('首次运行：正在下载 codex 引擎（约140MB，走国内镜像）…');
+          await invoke('install_engine');
+          setStatus('引擎安装完成');
+        }
+      } catch (e) {
+        addMsg('error', '引擎自动安装失败：' + e + '\n可手动安装：npm install -g @openai/codex，然后在设置里填 codex 路径');
+        return false;
+      }
       try {
         await invoke('codex_start');
         // initialize 握手

@@ -1,0 +1,14 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/simd_adler32-4bd68d9aae0d865e.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/hash.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/avx2.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/avx512.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/neon.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/scalar.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/sse2.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/ssse3.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/wasm.rs
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libsimd_adler32-4bd68d9aae0d865e.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/hash.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/avx2.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/avx512.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/neon.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/scalar.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/sse2.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/ssse3.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/wasm.rs
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/hash.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/avx2.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/avx512.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/neon.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/scalar.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/sse2.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/ssse3.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/simd-adler32-0.3.10/src/imp/wasm.rs:

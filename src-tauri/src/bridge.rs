@@ -46,7 +46,16 @@ pub async fn codex_start(app: AppHandle, state: State<'_, CodexState>) -> Result
 
     // 环境变量：把 API key 传给子进程（DMXAPI_KEY 是 config.toml 里 env_key 指定的名字）
     let cfg = crate::config::load_config().unwrap_or_default();
-    let mut cmd = Command::new(&cfg.codex_path);
+
+    // codex 路径解析优先级：自动安装的引擎 > 用户配置路径
+    let engine_bin = crate::installer::codex_bin();
+    let codex_path = if crate::installer::is_engine_installed() {
+        engine_bin.to_string_lossy().to_string()
+    } else {
+        cfg.codex_path.clone()
+    };
+
+    let mut cmd = Command::new(&codex_path);
     cmd.args(["app-server", "--stdio"])
         .env("DMXAPI_KEY", &cfg.api_key)
         .env("RUST_LOG", "error")
@@ -56,8 +65,7 @@ pub async fn codex_start(app: AppHandle, state: State<'_, CodexState>) -> Result
 
     let mut child = cmd.spawn().map_err(|e| {
         format!(
-            "启动 codex 失败（路径: {}）: {e}\n请到设置里确认 codex 路径正确且已安装",
-            cfg.codex_path
+            "启动 codex 失败（路径: {codex_path}）: {e}\n若未安装引擎，客户端会自动下载；也可手动: npm install -g @openai/codex"
         )
     })?;
 

@@ -1,0 +1,13 @@
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/tauri_plugin_shell-61df49b08e2b1fc0.d: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/commands.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/config.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/open.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/process/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/scope.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/scope_entry.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/init-iife.js
+
+/root/codex_client/gas-codex/src-tauri/target/debug/deps/libtauri_plugin_shell-61df49b08e2b1fc0.rmeta: /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/lib.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/commands.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/config.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/error.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/open.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/process/mod.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/scope.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/scope_entry.rs /root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/init-iife.js
+
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/lib.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/commands.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/config.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/error.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/open.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/process/mod.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/scope.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/scope_entry.rs:
+/root/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/tauri-plugin-shell-2.3.6/src/init-iife.js:

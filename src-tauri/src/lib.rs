@@ -1,14 +1,17 @@
 // Gas Codex 应用库
 //
 // 模块：
-// - config:  客户端配置 + codex config.toml 生成
-// - bridge:  codex app-server 子进程桥接（JSON-RPC over stdio）
+// - config:    客户端配置 + codex config.toml 生成
+// - bridge:    codex app-server 子进程桥接（JSON-RPC over stdio）
+// - installer: codex 引擎自动下载安装（npmmirror 国内镜像）
 
 mod bridge;
 mod config;
+mod installer;
 
 pub use bridge::{codex_send, codex_send_raw, codex_start, codex_stop};
 pub use config::{load_config, save_config, test_connection};
+pub use installer::{install_engine, is_engine_installed};
 
 use bridge::CodexState;
 
@@ -24,7 +27,9 @@ pub fn run() {
             codex_start,
             codex_send,
             codex_send_raw,
-            codex_stop
+            codex_stop,
+            install_engine,
+            is_engine_installed
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
